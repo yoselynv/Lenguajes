@@ -28,6 +28,10 @@ int main ()
   id='relacional';
  } else if((c == '+') ||(c == '-') || (c=='*')||(c=='/'){
   id='operador';
+  else if((c='<-')){
+  id='asignacion';
+  }
+  }
 
   printf("\n\n\nPulsa cualquier tecla para salir.");
   system("PAUSE");

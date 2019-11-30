@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
     
     if (((c >= 'a') && (c <= 'z'))){
 	  id=1;
-   }else if (((c >= 'A') && (c <= 'Z'))){
+    }else if (((c >= 'A') && (c <= 'Z'))){
 		 id=2;
 	}else if (((c >= '0' ) && (c <= '9'))){
 	 id=4;

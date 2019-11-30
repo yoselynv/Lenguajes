@@ -45,6 +45,7 @@ int main(int argc, char *argv[]) {
     }if (c=='='){
      id=13;
     }
+	
   	
 
 
@@ -53,11 +54,11 @@ switch(id) {
 		case 1 :
 		 if(estado==0 || estado==1){
 		  estado=1;
-		  }if(estado==2){
+		  }else if(estado==2){
 		   estado=1;
 		  }
 		  
-		 
+		 break;
 		  	
 		  /* Caso2: Si reconoce una letra mayuscula */	
 		case 2:
@@ -67,30 +68,35 @@ switch(id) {
 		    estado=1;
 		  }
 		  
-		  if(estado==11 || estado==12 || estado==13){
+		  else if(estado==11 || estado==12 || estado==13){
 		    estado==2;
 		  }
 		  
-		 	
+		 	break;
 		/* Caso1: Si reconoce un numero */
 		case 4:
 			if(estado==0 || estado==2 || estado==4|| estado==8)  {
 			 estado=4;
 			}
 			
-
+           break;
 		
 	     /* Caso6: Si reconoce el signo "+" */
 		case 6:
 	    if(estado==3 ){
 		estado=6;
 		}
-		
+		break;
 		
 		
 		/* Caso8: Si reconoce el signo "-" */
+		case 8:
+			if(estado==11){
+			 estado=8;
+			}
+			
 		
-		   
+		   break;
 	
 		/* Caso9: Si reconoce el signo "*" */
 		case 9:
@@ -103,7 +109,7 @@ switch(id) {
 		    if(estado==4 ){
 			estado=10;
 			}
-	
+	       break;
 		/* Caso5: Si reconoce el signo ";" */
 		case 5:
 		    if(estado==1 ){

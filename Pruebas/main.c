@@ -42,9 +42,9 @@ int main(int argc, char *argv[]) {
      id=11;
     }else if (c=='>'){
      id=12;
-    }if (c=='='){
+    }else if (c=='='){
      id=13;
-    }
+    } 
 	
   	
 
@@ -56,6 +56,8 @@ switch(id) {
 		  estado=1;
 		  }else if(estado==2){
 		   estado=1;
+		  } else if(estado==4){
+		   estado=14;
 		  }
 		  
 		 break;
@@ -66,9 +68,7 @@ switch(id) {
 		  estado=2;
 		  }else if(estado==1){
 		    estado=1;
-		  }
-		  
-		  else if(estado==11 || estado==12 || estado==13){
+		  }else if(estado==11 || estado==12 || estado==13){
 		    estado==2;
 		  }
 		  
@@ -93,7 +93,9 @@ switch(id) {
 		case 8:
 			if(estado==11){
 			 estado=8;
-			}
+			}else if(estado==14){
+		   estado=14;
+		  }
 			
 		
 		   break;
@@ -118,8 +120,9 @@ switch(id) {
 			  printf("Tkn_Asignacion \n");
 			}else if(estado==3){
 			   printf("Tkn_Ciclo \n");
-			
-			}
+			}else if(estado==14){
+		     printf("Tkn_CicloRepetir \n");
+		  }
 		break;
 		/* Caso11: Si reconoce el signo "<" */
 		case 11:
@@ -145,7 +148,8 @@ switch(id) {
 			estado=13;
 			}
 		break;
-	
+	      
+		
 	default:
 	 printf(" ");
 	 

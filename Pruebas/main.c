@@ -48,6 +48,8 @@ int main(int argc, char *argv[]) {
      id=15;
     }else if (c=='"'){
      id=16;
+    } else if (c==','){
+     id=17;
     } 
 	
   	
@@ -68,6 +70,8 @@ switch(id) {
 		   estado=15;
 		  }if(estado==16){
 		  estado=16;
+		  }if(estado==17){
+		  estado=4;
 		  }
 		  
 		 break;
@@ -197,6 +201,8 @@ switch(id) {
 		  printf("Tkn_Seleccion \n");
 		  }else if(estado==1){
 		     printf("Tkn_Leer\n");
+		     } if(estado==4){
+		     printf("Tkn_Cursor\n");
 		     } 
 		  break;
 		  
@@ -209,7 +215,13 @@ switch(id) {
 		  }
 		  
 		break;
+		   /* Caso16: Si reconoce el signo "" */
+		case 17:
+		  if(estado==4){
+		  estado=17;
+		  }
 		  
+		break;
 		  
 	default:
 	 printf(" ");
@@ -217,7 +229,7 @@ switch(id) {
 	 
 	}
 	
-	printf("El id es: %d\n\n",id);	
+	//printf("El id es: %d\n\n",id);	
 	
 }
 printf("El estado actual es: %d\n\n", estado);	

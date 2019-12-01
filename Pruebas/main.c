@@ -44,8 +44,10 @@ int main(int argc, char *argv[]) {
      id=12;
     }else if (c=='='){
      id=13;
-    } if (c=='\n'){
+    }else if (c=='\n'){
      id=15;
+    }else if (c=='"'){
+     id=16;
     } 
 	
   	
@@ -62,11 +64,15 @@ switch(id) {
 		   estado=14;
 		  }else if(estado==1){
 		   estado=14;
+		  }else if(estado==15){
+		   estado=15;
+		  }if(estado==16){
+		  estado=16;
 		  }
 		  
 		 break;
 		  	
-		  /* Caso2: Si reconoce una letra mayuscula */	
+		 /* Caso2: Si reconoce una letra mayuscula */	
 		case 2:
 		 if(estado==0|| estado==2){
 		  estado=2;
@@ -76,14 +82,23 @@ switch(id) {
 		    estado==2;
 		  }else if(estado==14){
 		   estado=14;
+		  }else if(estado==15){
+		   estado=15;
+		  }if(estado==16){
+		  estado=16;
 		  }
 		  
-		 	break;
+		  
+		break;
 		/* Caso1: Si reconoce un numero */
 		case 4:
 			if(estado==0 || estado==2 || estado==4|| estado==8)  {
 			 estado=4;
 			}else if(estado==14){
+		   estado=14;
+		  }else if(estado==15){
+		   estado=15;
+		  }if(estado==1){
 		   estado=14;
 		  }
 			
@@ -95,6 +110,8 @@ switch(id) {
 		estado=6;
 		}else if(estado==14){
 		   estado=14;
+		  }else if(estado==15){
+		   estado=15;
 		  }
 		break;
 		
@@ -105,6 +122,8 @@ switch(id) {
 			 estado=8;
 			}else if(estado==14){
 		   estado=14;
+		  }else if(estado==15){
+		   estado=15;
 		  }
 			
 		
@@ -120,7 +139,9 @@ switch(id) {
 		case 10:
 		    if(estado==4 ){
 			estado=10;
-			}
+			}else if(estado==15){
+		   estado=15;
+		  }
 	       break;
 		/* Caso5: Si reconoce el signo ";" */
 		case 5:
@@ -130,6 +151,8 @@ switch(id) {
 			  printf("Tkn_Asignacion \n");
 			}else if(estado==14){
 		     printf("Tkn_Ciclo \n");
+		     }else if(estado==16){
+		     printf("Tkn_Imprimir \n");
 		     } 
 		break;
 		/* Caso11: Si reconoce el signo "<" */
@@ -142,6 +165,8 @@ switch(id) {
 			 estado=11;
 			}else if(estado==14){
 		   estado=14;
+		  }else if(estado==15){
+		   estado=15;
 		  }
 			
 			
@@ -152,6 +177,8 @@ switch(id) {
 			estado=12;
 			}else if(estado==14){
 		   estado=14;
+		  }else if(estado==15){
+		   estado=15;
 		  }
 		break;
 	    /* Caso13: Si reconoce el signo "=" */
@@ -160,21 +187,37 @@ switch(id) {
 			estado=13;
 			}else if(estado==14){
 		   estado=14;
+		  }else if(estado==15){
+		   estado=15;
 		  }
 		break;
 	   /* Caso15: Si reconoce el signo "\n" */
-			case 15:
+		case 15:
 		  if(estado==14){
 		  printf("Tkn_Seleccion \n");
+		  }else if(estado==1){
+		     printf("Tkn_Leer\n");
+		     } 
+		  break;
+		  
+		 /* Caso16: Si reconoce el signo "" */
+		case 16:
+		  if(estado==14){
+		  estado=16;
+		  }if(estado==16){
+		  estado=16;
 		  }
+		  
 		break;
+		  
+		  
 	default:
 	 printf(" ");
 	 
 	 
 	}
 	
-	//printf("El id es: %d\n\n",id);	
+	printf("El id es: %d\n\n",id);	
 	
 }
 printf("El estado actual es: %d\n\n", estado);	

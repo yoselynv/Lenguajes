@@ -44,6 +44,8 @@ int main(int argc, char *argv[]) {
      id=12;
     }else if (c=='='){
      id=13;
+    } if (c=='\n'){
+     id=15;
     } 
 	
   	
@@ -58,6 +60,8 @@ switch(id) {
 		   estado=1;
 		  } else if(estado==4){
 		   estado=14;
+		  }else if(estado==1){
+		   estado=14;
 		  }
 		  
 		 break;
@@ -70,6 +74,8 @@ switch(id) {
 		    estado=1;
 		  }else if(estado==11 || estado==12 || estado==13){
 		    estado==2;
+		  }else if(estado==14){
+		   estado=14;
 		  }
 		  
 		 	break;
@@ -77,7 +83,9 @@ switch(id) {
 		case 4:
 			if(estado==0 || estado==2 || estado==4|| estado==8)  {
 			 estado=4;
-			}
+			}else if(estado==14){
+		   estado=14;
+		  }
 			
            break;
 		
@@ -85,7 +93,9 @@ switch(id) {
 		case 6:
 	    if(estado==3 ){
 		estado=6;
-		}
+		}else if(estado==14){
+		   estado=14;
+		  }
 		break;
 		
 		
@@ -118,11 +128,9 @@ switch(id) {
 			printf("Tkn_declaracionVariable \n");
 			}else if(estado==4){
 			  printf("Tkn_Asignacion \n");
-			}else if(estado==3){
-			   printf("Tkn_Ciclo \n");
 			}else if(estado==14){
-		     printf("Tkn_CicloRepetir \n");
-		  }
+		     printf("Tkn_Ciclo \n");
+		     } 
 		break;
 		/* Caso11: Si reconoce el signo "<" */
 		case 11:
@@ -132,7 +140,9 @@ switch(id) {
 			estado=2;
 			}else if(estado==1){
 			 estado=11;
-			}
+			}else if(estado==14){
+		   estado=14;
+		  }
 			
 			
 		break;
@@ -140,23 +150,31 @@ switch(id) {
 		case 12:
 		    if(estado==2 || estado==3 ){
 			estado=12;
-			}
+			}else if(estado==14){
+		   estado=14;
+		  }
 		break;
 	    /* Caso13: Si reconoce el signo "=" */
 			case 13:
 		    if(estado==4 ){
 			estado=13;
-			}
+			}else if(estado==14){
+		   estado=14;
+		  }
 		break;
-	      
-		
+	   /* Caso15: Si reconoce el signo "\n" */
+			case 15:
+		  if(estado==14){
+		  printf("Tkn_Seleccion \n");
+		  }
+		break;
 	default:
 	 printf(" ");
 	 
 	 
 	}
 	
-	printf("El id es: %d\n\n",id);	
+	//printf("El id es: %d\n\n",id);	
 	
 }
 printf("El estado actual es: %d\n\n", estado);	

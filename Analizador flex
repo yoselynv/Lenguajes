@@ -1,0 +1,54 @@
+%{
+# include <stdio.>
+%}
+DIGITO [0-9] ECHO
+CADENA [A-Za-z][a-zA-Z0-9]* ECHO
+TIPO [INT]|[STRING]|[DOUBLE]  
+
+%%
+
+{CADENA} printf("token cadena: %s\n", yytext);
+
+{DIGITO} printf ("token entero: %s\n", yytext);
+
+{CADENA}"<""-"{DIGITO}*
+                    printf("token asignacion: %s\n", yytext);
+                    
+'DEFINIR'{CADENA}{TIPO}";"
+                     printf("token declararVariable: %s\n", yytext);
+                     
+'WHILE'"("{CADENA}"=""="{CADENA}")"| {CADENA}"<"{CADENA}")" |{CADENA}">"{CADENA}")"|{CADENA}"<""="{CADENA}")"
+|{CADENA}">""="{CADENA}")"|{CADENA}"!""="{CADENA}")"
+                                           printf("token ciclo: %s\n", yytext);
+                                           
+  'IF'"("{CADENA}"=""="{CADENA}")"
+                               printf("token seleccion: %s\n", yytext);
+                               
+  'else'{CADENA}+
+                 printf("token seleccion: %s\n, yytext);
+                 
+   'leer'{CADENA}
+                printf("token leer: %s\n", yytext);
+                     
+                    
+'imprimir'{CADENA}|{DIGITO}
+                 printf("token imprimir: %s\n", yytext);
+                 
+ /t {DIGITO}","{DIGITO}
+                 printf("token cursor: %s\n", yytext);
+                 
+ "+"|"-"|"*"|"/"   printf( "token operador: %s\n", yytext );    
+ 
+ {{digito}"+"{digito}}|{{digito}"-"{digito}}|{{digito}"*"{digito}}|{{digito}"/"{digito}}
+                   printf("token operacionAritmetica: %s\n", yytext);
+                   
+  IF|ELSE|WHILE{
+                 printf("token palabraReservada: %s\n", yytext);
+                 
+                
+                 
+                 
+
+       
+       }
+

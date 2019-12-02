@@ -15,7 +15,7 @@ int main ()
   while ((c = getc(fichero)) != EOF)
   {
     if (((c >= 'a') && (c <= 'z')) )
-	{
+	
 	  id ='minuscula';
 	}
 	else if((c >= 'A') && (c <= 'Z')){

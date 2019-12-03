@@ -37,6 +37,17 @@ TIPO [INT]|[STRING]|[DOUBLE]
  /t {DIGITO}","{DIGITO}
                  printf("token cursor: %s\n", yytext);
                  
+ "+"|"-"|"*"|"/"   printf( "token operador: %s\n", yytext );    
+ 
+ {{digito}"+"{digito}}|{{digito}"-"{digito}}|{{digito}"*"{digito}}|{{digito}"/"{digito}}
+                   printf("token operacionAritmetica: %s\n", yytext);
+                   
+  IF|ELSE|WHILE{
+                 printf("token palabraReservada: %s\n", yytext);
+                 
+                
+                 
+                 
 
        
        }

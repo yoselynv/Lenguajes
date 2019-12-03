@@ -23,6 +23,12 @@ TIPO [INT]|[STRING]|[DOUBLE]
                                            
   'IF'"("{CADENA}"=""="{CADENA}")"
                                printf("token seleccion: %s\n", yytext);
+                               
+  'else'{CADENA}+
+                 printf("token seleccion: %s\n, yytext);
+                 
+   'leer'{CADENA}
+                printf("token leer: %s\n", yytext);
                      
                     
 

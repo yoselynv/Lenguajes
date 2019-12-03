@@ -42,7 +42,7 @@ TIPO [INT]|[STRING]|[DOUBLE]
  "+"|"-"|"*"|"/"   printf( "token operador: %s\n", yytext );    
  
  {{digito}"+"{digito}}|{{digito}"-"{digito}}|{{digito}"*"{digito}}|{{digito}"/"{digito}}
-                   printf("token operacionAritmetica: %s\n", yytext);
+                                    printf("token operacionAritmetica: %s\n", yytext);
                    
   IF|ELSE|WHILE{
                  printf("token palabraReservada: %s\n", yytext);

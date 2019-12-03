@@ -1,9 +1,21 @@
 %{
 # include <stdio.>
 %}
-%option noyywrap
+DIGITO [0-9] ECHO
+CADENA [A-Za-z][a-zA-Z0-9]* ECHO
+TIPO [INT]|[STRING]|[DOUBLE]  
 
 %%
-[0-9]+ {
-       printf("token_cadena_entero: %s\n" , yytext );
+
+{CADENA} printf("token cadena: %s\n", yytext);
+
+{DIGITO} printf ("token entero: %s\n", yytext);
+
+{CADENA}"<""-"{DIGITO}*
+                    printf("token asignacion: %s\n", yytext);
+                    
+
+
+       
        }
+

@@ -14,6 +14,16 @@ TIPO [INT]|[STRING]|[DOUBLE]
 {CADENA}"<""-"{DIGITO}*
                     printf("token asignacion: %s\n", yytext);
                     
+'DEFINIR'{CADENA}{TIPO}
+                     printf("token declararVariable: %s\n", yytext);
+                     
+'WHILE'"("{CADENA}"=""="{CADENA}")"| {CADENA}"<"{CADENA}")" |{CADENA}">"{CADENA}")"|{CADENA}"<""="{CADENA}")"
+|{CADENA}">""="{CADENA}")"|{CADENA}"!""="{CADENA}")"
+                                           printf("token cinclo: %s\n", yytext);
+                                           
+                                           
+                     
+                    
 
 
        

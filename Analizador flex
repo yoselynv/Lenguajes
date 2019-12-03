@@ -14,14 +14,15 @@ TIPO [INT]|[STRING]|[DOUBLE]
 {CADENA}"<""-"{DIGITO}*
                     printf("token asignacion: %s\n", yytext);
                     
-'DEFINIR'{CADENA}{TIPO}
+'DEFINIR'{CADENA}{TIPO}";"
                      printf("token declararVariable: %s\n", yytext);
                      
 'WHILE'"("{CADENA}"=""="{CADENA}")"| {CADENA}"<"{CADENA}")" |{CADENA}">"{CADENA}")"|{CADENA}"<""="{CADENA}")"
 |{CADENA}">""="{CADENA}")"|{CADENA}"!""="{CADENA}")"
-                                           printf("token cinclo: %s\n", yytext);
+                                           printf("token ciclo: %s\n", yytext);
                                            
-                                           
+  'IF'"("{CADENA}"=""="{CADENA}")"
+                               printf("token seleccion: %s\n", yytext);
                      
                     
 

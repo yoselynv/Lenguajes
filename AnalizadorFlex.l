@@ -1,5 +1,7 @@
 %{
 # include <stdio.>
+#include<math.h>
+void Salir();
 %}
 DIGITO [0-9] ECHO
 CADENA [A-Za-z][a-zA-Z0-9]* ECHO
@@ -40,15 +42,31 @@ TIPO [INT]|[STRING]|[DOUBLE]
  "+"|"-"|"*"|"/"   printf( "token operador: %s\n", yytext );    
  
  {{digito}"+"{digito}}|{{digito}"-"{digito}}|{{digito}"*"{digito}}|{{digito}"/"{digito}}
-                   printf("token operacionAritmetica: %s\n", yytext);
+                                    printf("token operacionAritmetica: %s\n", yytext);
                    
   IF|ELSE|WHILE{
                  printf("token palabraReservada: %s\n", yytext);
                  
                 
-                 
-                 
-
-       
-       }
+ %%
+ 
+ int main(int argc, char*argv[]){
+             if(argc==2){
+                        yyin=fopen(argv[1], "rt");
+                        if(yyin==NULL){
+                                     printf("no se puede abrir%s", argv[1]);
+                                     exit(1);
+                        }
+              }          
+              else{
+                  yyin=stdin;
+               }
+               yylex();
+               return 0;
+               
+ }
+ void Salir(){
+            printf("finalizado");
+            exit(0)
+ }
 

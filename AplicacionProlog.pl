@@ -39,8 +39,13 @@ carrera(informatica_administrativa,X).
 carrera(mercadotecnia,X).
 
 agregar_alumno(X,L,[X|L]).
-agregar_alumno(X,[X|Y],[X|Z]):-agregar(X,Y,Z).
-alumno(X,Y,A,B):-carrera(Y,X),agregar_alumno(X,A,B).
+agregar_alumno(X,[X|Y],[X|Z]):-agregar_alumno(X,Y,Z).
+alumno_carrera(X,Y,A,B):-carrera(Y,X),agregar_alumno(X,A,B).
+
+agregar_clase(X,L,[X|L]).
+agregar_clase(X,[X|Y],[X|Z]):-agregar_clase(X,Y,Z).
+alumno_clase(X,Y,A,B):-clase(Y,X),agregar_clase(X,A,B).
+
 
 imprimir_alumnos([]):-!.
 imprimir_alumnos([A|B]):-write(A),nl,imprimir_alumnos(B).

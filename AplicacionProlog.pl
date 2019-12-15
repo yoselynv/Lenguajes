@@ -191,3 +191,10 @@ alumnos_promedio(X,Y):-write(X),tab(1),imprimir_alumno(Y).
 
 /*Lista de alumnos por clase y promedio*/
 alumnos_promedio(X,[A|B],[C|D]):-clase(X),write("Alumnos: "),imprimir_alumno([A|B]),nl,write("Promedios: "),imprimir_promedios([C|D]).
+
+aprobado(Z):-Z>64,write("Aprobado").
+aprobado(Z):-Z<65,write("Reprobado").
+imprimir_promedios_obs([A|B]):-write(A),tab(1),write("Observacion:"),aprobado(A),tab(1),imprimir_promedios_obs(B).
+/*Lista de alumnos por clase,promedio y observacion de aprobado o reprobado*/
+alumnos_promedio_observacion(X,[A|B],[C|D]):-clase(X),write("Alumnos: "),imprimir_alumno([A|B]),nl,write("Promedios: "),imprimir_promedios_obs([C|D]).
+

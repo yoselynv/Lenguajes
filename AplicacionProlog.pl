@@ -137,23 +137,37 @@ carrera(banca_y_finanzas).
 carrera(informatica_administrativa).
 carrera(mercadotecnia).
 
-
+/*Relacionando una clase para cada alumno de forma generica*/
 clase_alumno(Y,X).
-clase_carrera(X,Y).
+/*Relacionando una clase para cada alumno*/
+clase_alumno(lenguajes,mario).
+clase_alumno(circuitos,renata).
+clase_alumno(vectores,luis).
+clase_alumno(dibujo1,angelica).
 
+/*Relacionando una clase para cada carrera de forma generica*/
+clase_carrera(X,Y).
+/*Relacionando una clase para cada carrera*/
+clase_carrera(organica,ing_quimica).
+clase_carrera(circuitos,ing_electrica).
+clase_carrera(ingles,lenguas_esxtranjeras).
+clase_carrera(poo,ing_sistemas).
+
+
+/*Agrega una carrera a una lista*/
 agregarcarrera(E,L,[E|L]).
 agregarcarrera(E,[X|Y],[X,Z]):-agregarcarrera(E,Y,Z).
 
-/*Agrega alumnos a un arreglo*/
+/*Agrega alumnos a una lista*/
 agregar_alumno(X,L,[X|L]).
 agregar_alumno(X,[X|Y],[X|Z]):-agregar_alumno(X,Y,Z).
-/*Muestra los alumnos por clase en un arreglo*/
+/*Muestra los alumnos por clase en una lista*/
 alumno_carrera(X,Y,A,C):-carrera(Y,X),agregar_alumno(X,A,C).
 
-/*Agregar clases a un arreglo*/
+/*Agregar clases a una lista*/
 agregar_clase(X,L,[X|L]).
 agregar_clase(X,[X|Y],[X|Z]):-agregar_clase(X,Y,Z).
-/*Muestra los alumnos por clase en arreglo*/
+/*Muestra los alumnos por clase en una lista*/
 alumno_clase(X,Y,A,B):-clase_alumno(Y,X),agregar_clase(X,A,B).
 /*Muestra las clases por carrera en arreglo*/
 carrera_clase(X,Y,A,B):-clase_carrera(X,Y),agregar_clase(X,A,B).
@@ -192,9 +206,26 @@ alumnos_promedio(X,Y):-write(X),tab(1),imprimir_alumno(Y).
 /*Lista de alumnos por clase y promedio*/
 alumnos_promedio(X,[A|B],[C|D]):-clase(X),write("Alumnos: "),imprimir_alumno([A|B]),nl,write("Promedios: "),imprimir_promedios([C|D]).
 
+/*Regla para saber si un alumno aprobo o reprobo una clase*/
 aprobado(Z):-Z>64,write("Aprobado").
 aprobado(Z):-Z<65,write("Reprobado").
+/*Imprime los promedios con la observacion correspondiente*/
 imprimir_promedios_obs([A|B]):-write(A),tab(1),write("Observacion:"),aprobado(A),tab(1),imprimir_promedios_obs(B).
+
 /*Lista de alumnos por clase,promedio y observacion de aprobado o reprobado*/
 alumnos_promedio_observacion(X,[A|B],[C|D]):-clase(X),write("Alumnos: "),imprimir_alumno([A|B]),nl,write("Promedios: "),imprimir_promedios_obs([C|D]).
 
+/* Para poder utilizar assert:
+Agregar y eliminar alumno:
+1.dynamic alumno/1.
+2.assert(alumno(nombre)).
+3.retract(alumno(nombre)).
+Agregar y eliminar clases:
+1.dynamic clase/1.
+2.assert(clase(nombre)).
+3.retract(clase(nombre)).
+Agregar y eliminar calificaciones:
+1.dynamic clasepromedio/1.
+2.assert(clasepromedio(nota,nombre)).
+3.retract(clasepromedio(nota,nombre)).
+*/

@@ -81,27 +81,37 @@ clase_carrera(X,Y).
 agregarcarrera(E,L,[E|L]).
 agregarcarrera(E,[X|Y],[X,Z]):-agregarcarrera(E,Y,Z).
 
+/*Agrega alumnos a un arreglo*/
 agregar_alumno(X,L,[X|L]).
 agregar_alumno(X,[X|Y],[X|Z]):-agregar_alumno(X,Y,Z).
+/*Muestra los alumnos por clase en un arreglo*/
 alumno_carrera(X,Y,A,B):-carrera(Y,X),agregar_alumno(X,A,B).
 
+/*Agregar clases a un arreglo*/
 agregar_clase(X,L,[X|L]).
 agregar_clase(X,[X|Y],[X|Z]):-agregar_clase(X,Y,Z).
+/*Muestra los alumnos por clase en arreglo*/
 alumno_clase(X,Y,A,B):-clase_alumno(Y,X),agregar_clase(X,A,B).
+/*Muestra las clases por carrera en arreglo*/
 carrera_clase(X,Y,A,B):-clase_carrera(X,Y),agregar_clase(X,A,B).
 
-
+/*Caso base de imprimir alumnos*/
 imprimir_alumnos([]):-!.
+/*Caso recursivo de imprimir alumnos*/
 imprimir_alumnos([A|B]):-write(A),nl,imprimir_alumnos(B).
+/*Caso base de imprimir clases*/
 imprimir_clases([A|B]):-!.
+/*Caso recursivo de imprimir clases*/
 imprimir_clases([A|B]):-write(A),nl,imprimir_clases(B).
 
+/*Lista de Alumnos por carrera*/
 lista_alumnos_por_carrera([A|B],X):-carrera(X),imprimir_alumnos([A|B]).
+/*Lista de Clases por carrera*/
 lista_clases_por_carrera([A|B],X):-carrera(X),imprimir_clases([A|B]).
 
-
-alumnos_por_carrera()
+/*regla para saber si un alumno aprobo o no una clase*/
 clase_aprobada(Z):-Z>64,write("Clase Aprobada").
 clase_aprobada(Z):-Z<65,write("Clase Reprobada").
+
 
 

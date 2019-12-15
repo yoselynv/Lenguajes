@@ -82,12 +82,12 @@ clasepromedio(Promedio,Clase).
 clasepromedio(89,estadistica).
 clasepromedio(70,calculo1).
 clasepromedio(45,calculo2).
-clasepromedio(87,español).
+clasepromedio(87,historia).
 
 /*Definiendo el nombre de las clases*/
 clase(estadistica).
 clase(ingles).
-clase(español).
+clase(ecuaciones).
 clase(calculo1).
 clase(poo).
 clase(finanzas).

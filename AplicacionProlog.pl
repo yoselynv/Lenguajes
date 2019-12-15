@@ -1,3 +1,4 @@
+
 alumno(juan).
 alumno(maria).
 alumno(pedro).
@@ -75,6 +76,13 @@ carrera(banca_y_finanzas,X).
 carrera(informatica_administrativa,X).
 carrera(mercadotecnia,X).
 
+
+clasepromedio(Promedio,Clase).
+clasepromedio(89,estadistica).
+clasepromedio(70,calculo1).
+clasepromedio(45,calculo2).
+clasepromedio(87,español).
+
 clase_alumno(Y,X).
 clase_carrera(X,Y).
 
@@ -85,7 +93,7 @@ agregarcarrera(E,[X|Y],[X,Z]):-agregarcarrera(E,Y,Z).
 agregar_alumno(X,L,[X|L]).
 agregar_alumno(X,[X|Y],[X|Z]):-agregar_alumno(X,Y,Z).
 /*Muestra los alumnos por clase en un arreglo*/
-alumno_carrera(X,Y,A,B):-carrera(Y,X),agregar_alumno(X,A,B).
+alumno_carrera(X,Y,A,C):-carrera(Y,X),agregar_alumno(X,A,C).
 
 /*Agregar clases a un arreglo*/
 agregar_clase(X,L,[X|L]).
@@ -109,9 +117,11 @@ lista_alumnos_por_carrera([A|B],X):-carrera(X),imprimir_alumnos([A|B]).
 /*Lista de Clases por carrera*/
 lista_clases_por_carrera([A|B],X):-carrera(X),imprimir_clases([A|B]).
 
-/*regla para saber si un alumno aprobo o no una clase*/
+/*Regla para saber si un alumno aprobo o no una clase*/
 clase_aprobada(Z):-Z>64,write("Clase Aprobada").
 clase_aprobada(Z):-Z<65,write("Clase Reprobada").
+
+promedio_alumno(X,Y):-write(X),tab(1),write("tiene"),tab(1),write(Y),tab(1),write("de promedio").
 
 
 

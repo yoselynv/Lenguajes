@@ -56,7 +56,7 @@ carrera(filosofia,X).
 carrera(historia,X).
 carrera(letras,X).
 carrera(sociologia,X).
-carrera(educ.fisica,X).
+carrera(educ_fisica,X).
 carrera(lenguas_extranjeras,X).
 carrera(musica,X).
 carrera(desarrollo_local,X).
@@ -82,12 +82,12 @@ clasepromedio(Promedio,Clase).
 clasepromedio(89,estadistica).
 clasepromedio(70,calculo1).
 clasepromedio(45,calculo2).
-clasepromedio(87,español).
+clasepromedio(87,espaÃ±ol).
 
 /*Definiendo el nombre de las clases*/
 clase(estadistica).
 clase(ingles).
-clase(español).
+clase(espaÃ±ol).
 clase(calculo1).
 clase(poo).
 clase(finanzas).

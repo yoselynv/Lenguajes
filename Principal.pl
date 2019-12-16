@@ -187,8 +187,8 @@ lista_alumnos_por_carrera([A|B],X):-carrera(X),imprimir_alumnos([A|B]).
 lista_clases_por_carrera([A|B],X):-carrera(X),imprimir_clases([A|B]).
 
 /*Regla para saber si un alumno aprobo o no una clase*/
-clase_aprobada(Z):-Z>64,write("Clase Aprobada").
-clase_aprobada(Z):-Z<65,write("Clase Reprobada").
+clase_aprobada(C,Z):-Z>64,write(C),write("Clase Aprobada").
+clase_aprobada(C,Z):-Z<65,write(C),write("Clase Reprobada").
 
 /*Regla para conocer el promedio de un alumno*/
 promedio_alumno(X,Y):-write(X),tab(1),write("tiene"),tab(1),write(Y),tab(1),write("de promedio").

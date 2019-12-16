@@ -201,19 +201,18 @@ promedio_alumnos(X,Y):-write(X),tab(1),imprimir_promedios(Y).
 imprimir_alumno([]):-!.
 /*Caso recursivo de imprimir alumnos*/
 imprimir_alumno([A|B]):-write(A),tab(1),imprimir_alumno(B).
-alumnos_promedio(X,Y):-write(X),tab(1),imprimir_alumno(Y).
 
 /*Lista de alumnos por clase y promedio*/
 alumnos_promedio(X,[A|B],[C|D]):-clase(X),write("Alumnos: "),imprimir_alumno([A|B]),nl,write("Promedios: "),imprimir_promedios([C|D]).
 
 /*Regla para saber si un alumno aprobo o reprobo una clase*/
-aprobado(Z):-Z>64,write("Aprobado").
-aprobado(Z):-Z<65,write("Reprobado").
+aprobado(Z):-Z>64,write("El alumno esta Aprobado").
+aprobado(Z):-Z<65,write("El alumno esta Reprobado").
 /*Imprime los promedios con la observacion correspondiente*/
-imprimir_promedios_obs([A|B]):-write(A),tab(1),write("Observacion:"),aprobado(A),tab(1),imprimir_promedios_obs(B).
+imprimir_promedios_obs([A|B]):-write(A),tab(1),write("Observacion:"),aprobado(A),nl,imprimir_promedios_obs(B).
 
 /*Lista de alumnos por clase,promedio y observacion de aprobado o reprobado*/
-alumnos_promedio_observacion(X,[A|B],[C|D]):-clase(X),write("Alumnos: "),imprimir_alumno([A|B]),nl,write("Promedios: "),imprimir_promedios_obs([C|D]).
+alumnos_promedio_observacion(X,[A|B],[C|D]):-clase(X),write("Alumnos: "),imprimir_alumno([A|B]),nl,write("Promedios: "),imprimir_promedios_obs([C|D])).
 
 /* Para poder utilizar assert:
 Agregar y eliminar alumno:
